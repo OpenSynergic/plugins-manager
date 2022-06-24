@@ -1,0 +1,24 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+        Schema::create(config('plugins.table_names.plugin_settings') ?? 'plugin_settings', function (Blueprint $table) {
+            $table->string('name');
+            $table->string('setting_name');
+            $table->text('setting_value');
+
+            $table->unique(['name', 'setting_name']);
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(config('plugins.table_names.plugin_settings') ?? 'plugin_settings');
+    }
+};
