@@ -53,7 +53,7 @@ class Plugins extends Page implements Tables\Contracts\HasTable
         return PluginModel::query();
     }
 
-    protected function getActions(): array | View | null
+    protected function getActions(): array
     {
         return [
             Action::make('upload')
